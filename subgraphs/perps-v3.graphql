@@ -42,6 +42,8 @@ type OrderSettled @entity {
   txnHash: String!
   interestCharged: BigInt
   position: PerpsV3Position
+  vipTier: Int
+  feeRebate: BigInt!
 }
 
 type OrderCommitted @entity {
@@ -219,4 +221,12 @@ type InterestCharged @entity {
   accountId: BigInt!
   interest: BigInt!
   txHash: String!
+}
+
+type AccumulatedVolumeFee @entity {
+  id: ID!
+  volume: BigInt!
+  fees: BigInt!
+  timestamp: BigInt!
+  orderIds: [String!]!
 }
